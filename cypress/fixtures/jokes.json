@@ -1,0 +1,14 @@
+{
+  "jokes": [
+    {
+      "id": 1,
+      "joke": "Joke 1",
+      "category": "Programming"
+    },
+    {
+      "id": 2,
+      "joke": "Joke 2",
+      "category": "Dark"
+    }
+  ]
+}

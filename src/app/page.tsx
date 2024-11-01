@@ -1,63 +1,94 @@
 "use client";
-import { useState } from "react";
-import { JokeData, Joke } from "@/types/index";
-import JokeCard from "@/app/components/joke-card";
-import JokeFetcher from "@/lib/api/jokes";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import JokeCard from "@/app/components/JokeCard";
+import LanguageSelector from "@/app/components/LanguageSelector";
+import FetchJokesButton from "@/app/components/FetchJokeButton";
+import { Card, CardContent } from "@/components/ui/card";
+import { Loader2 } from "lucide-react";
+import { fetchJokes, translateJokes } from "@/app/utils/jokeUtils";
+import { Joke, JokesResponse } from "@/app/types/jokeTypes";
 
 export default function HomePage() {
-	const [selectedLanguage, setSelectedLanguage] = useState("EN");
-	const [jokeData, setJokeData] = useState<JokeData | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [isFetching, setIsFetching] = useState(false);
+  const [translatedJokes, setTranslatedJokes] = useState<Joke[]>([]);
 
-	console.log(jokeData);
+  const {
+    data: jokeData,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<JokesResponse, Error>({
+    queryKey: ["jokes"],
+    queryFn: fetchJokes,
+    enabled: true,
+  });
 
-	const handleLanguageChange = (value: string) => {
-		setSelectedLanguage(value);
-	};
+  useEffect(() => {
+    if (jokeData && jokeData.jokes) {
+      if (selectedLanguage === "EN") {
+        setTranslatedJokes(jokeData.jokes);
+      } else {
+        translateJokes(jokeData.jokes, selectedLanguage, setTranslatedJokes);
+      }
+    }
+  }, [jokeData, selectedLanguage]);
 
-	const handleJokesFetched = (fetchedJokes: JokeData) => {
-		setJokeData(fetchedJokes);
-	};
+  const handleLanguageChange = (value: string) => {
+    setSelectedLanguage(value);
+  };
 
-	return (
-		<div className="grid min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-			<h1 className="text-4xl font-bold">Let's have some pun</h1>
+  const handleFetchJokes = () => {
+    setIsFetching(true);
+    refetch().finally(() => {
+      setIsFetching(false);
+    });
+  };
 
-			<Select
-				onValueChange={handleLanguageChange}
-				defaultValue={selectedLanguage}>
-				<SelectTrigger className="w-[180px]">
-					<SelectValue placeholder="Select language" />
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value="EN">English</SelectItem>
-					<SelectItem value="DE">German</SelectItem>
-					<SelectItem value="FR">French</SelectItem>
-					<SelectItem value="ES">Spanish</SelectItem>
-				</SelectContent>
-			</Select>
+  return (
+    <div className="grid items-start p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex justify-between">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-4xl font-bold">
+            <span className="underline text-slate-500">P</span>unTime
+          </h1>
+          <p>A simple application that fetches random jokes. Laugh away!</p>
+        </div>
+        <LanguageSelector
+          selectedLanguage={selectedLanguage}
+          onLanguageChange={handleLanguageChange}
+        />
+      </div>
 
-			<JokeFetcher onJokesFetched={handleJokesFetched} />
+      <FetchJokesButton
+        onClick={handleFetchJokes}
+        isLoading={isLoading || isFetching}
+      />
 
-			<main className="grid md:grid-cols-2 gap-8 items-center sm:items-start">
-				{jokeData && jokeData.jokes && jokeData.jokes.length > 0 ? (
-					jokeData.jokes.map((joke: Joke) => (
-						<JokeCard
-							key={joke.id}
-							jokeData={joke}
-							selectedLanguage={selectedLanguage}
-						/>
-					))
-				) : (
-					<p>No jokes available</p>
-				)}
-			</main>
-		</div>
-	);
+      {error && (
+        <p className="text-red-500">Error fetching jokes: {error.message}</p>
+      )}
+
+      <main className="grid lg:grid-cols-2 gap-8 items-start">
+        {isLoading || isFetching ? (
+          <div className="col-span-2 flex justify-center items-center">
+            <Loader2 className="h-10 w-10 animate-spin" />
+          </div>
+        ) : translatedJokes.length > 0 ? (
+          translatedJokes.map((joke: Joke) => (
+            <Card key={joke.id} className="h-[240px] relative">
+              <CardContent className="p-8 items-start">
+                <JokeCard jokeData={joke} selectedLanguage={selectedLanguage} />
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <div className="col-span-2 flex justify-center items-center">
+            No jokes available
+          </div>
+        )}
+      </main>
+    </div>
+  );
 }
