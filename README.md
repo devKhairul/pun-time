@@ -1,5 +1,3 @@
-Here's the README.md file for your Pun-Time app:
-
 # Pun-Time
 
 A joke fetching and translation app built with Next.js and TypeScript.
