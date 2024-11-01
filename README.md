@@ -7,7 +7,6 @@ A joke fetching and translation app built with Next.js and TypeScript.
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Running the App](#running-the-app)
 - [Running Tests](#running-tests)
@@ -18,12 +17,6 @@ A joke fetching and translation app built with Next.js and TypeScript.
 ## Getting Started
 
 Welcome to Pun-Time! This app fetches jokes from an API and translates them into different languages.
-
-## Prerequisites
-
-- Node.js (version 14 or higher)
-- pnpm (version 6 or higher)
-- TypeScript (version 4 or higher)
 
 ## Setup
 
