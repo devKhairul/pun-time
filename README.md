@@ -1,6 +1,5 @@
-Sure! Here’s the updated README.md file for your Pun-Time app, with the `pnpm setup` section removed and the CLI command for running tests updated to use Cypress.
+Here's the README.md file for your Pun-Time app:
 
-```markdown
 # Pun-Time
 
 A joke fetching and translation app built with Next.js and TypeScript.
@@ -29,22 +28,22 @@ Welcome to Pun-Time! This app fetches jokes from an API and translates them into
 ## Setup
 
 1. Clone the repository:
-```
 
-git clone https://github.com/your-username/pun-time.git
-
-```
+   ```
+   git clone https://github.com/your-username/pun-time.git
+   ```
 
 2. Install dependencies:
-```
 
-pnpm install
-
-```
+   ```
+   pnpm install
+   ```
 
 3. Create a new file named `.env` in the root directory and add the following variables:
-- `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
-- `NEXT_PUBLIC_TRANSLATION_API_KEY`: the API key for the translation API
+   - `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
+   - `NEXT_PUBLIC_TRANSLATION_API_KEY`: the API key for the translation API
+
+```
 
 ## Running the App
 
@@ -59,20 +58,14 @@ pnpm dev
 
 ## Running Tests
 
-Run the test script using Cypress:
-```
-
-pnpm cypress open
-
-```
-or to run tests in headless mode:
+This app integrates Cypress for E2E Testing. Run the test script:
 ```
 
 pnpm cypress run
 
 ```
 
-Cypress will execute all tests defined in the test directory.
+Cypress will run all the tests in the `cypress/e2e` directory.
 
 ## Building and Deploying
 
@@ -83,11 +76,17 @@ pnpm build
 
 ```
 
-2. Deploy the app to your preferred platform (e.g., Vercel, Netlify, etc.)
+2. Deploy the app to your preferred platform (e.g. Vercel, Netlify, etc.)
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request with your changes and a brief description of what you've changed.
 
 ## License
 
-This project is licensed under the MIT License.
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Feel free to adjust any other sections as needed!
+Citations:
+[1] https://sv443.net/jokeapi/v2/
+[2] https://www.deepl.com/en/pro-api
+```
