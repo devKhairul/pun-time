@@ -2,7 +2,7 @@ import { Joke, JokesResponse } from "../types/jokeTypes";
 
 export const fetchJokes = async (): Promise<JokesResponse> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_JOKE_API_BASE_URL}?blacklistFlags=racist,sexist&type=single&amount=10&lang=en`
+    `${process.env.NEXT_PUBLIC_JOKE_API_BASE_URL}?blacklistFlags=racist,sexist&type=single&amount=8&lang=en`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch jokes");
