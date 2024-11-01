@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Here's the README.md file for your Pun-Time app:
+
+# Pun-Time
+
+A joke fetching and translation app built with Next.js and TypeScript.
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Running the App](#running-the-app)
+- [Running Tests](#running-tests)
+- [Building and Deploying](#building-and-deploying)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Getting Started
 
-First, run the development server:
+Welcome to Pun-Time! This app fetches jokes from an API and translates them into different languages.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Prerequisites
+
+- Node.js (version 14 or higher)
+- pnpm (version 6 or higher)
+- TypeScript (version 4 or higher)
+
+## Setup
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/your-username/pun-time.git
+   ```
+
+2. Install dependencies:
+
+   ```
+   pnpm install
+   ```
+
+3. Create a new file named `.env` in the root directory and add the following variables:
+
+   - `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
+   - `NEXT_PUBLIC_TRANSLATION_API_KEY`: the API key for the translation API
+
+4. Run the setup script:
+   ```
+   pnpm setup
+   ```
+
+## Running the App
+
+1. Start the development server:
+
+   ```
+   pnpm dev
+   ```
+
+2. Open your browser and navigate to `http://localhost:3000`
+
+## Running Tests
+
+Run the test script:
+
+```
+pnpm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Jest will run all the tests in the `tests` directory.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building and Deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Build the app:
 
-## Learn More
+   ```
+   pnpm build
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Deploy the app to your preferred platform (e.g. Vercel, Netlify, etc.)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome! Please submit a pull request with your changes and a brief description of what you've changed.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Citations:
+[1] https://sv443.net/jokeapi/v2/
+[2] https://dante.univ-tlse2.fr/access/files/original/b9c57bb0a76401d7608a0556b37d66366ad79220.pdf
+[3] https://www.reddit.com/r/languagelearning/comments/rno6tr/what_examples_have_you_seen_of_things_getting/
+[4] https://linguagreca.com/blog/2013/03/jokes-translators-intepreters-linguists/
+[5] https://wstyler.ucsd.edu/puns/
+[6] https://absolutewrite.com/forums/index.php
+[7] https://www.researchgate.net/publication/261660600_Translating_Jokes_for_Dubbed_Television_Situation_Comedies
+[8] https://inews.co.uk/light-relief/jokes/best-pun-based-jokes-170096
