@@ -35,10 +35,6 @@ Welcome to Pun-Time! This app fetches jokes from an API and translates them into
    - `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
    - `DEEPL_API_KEY`: the API key for the translation API
 
-   ```
-
-   ```
-
 ## Running the App
 
 1. Start the development server:
