@@ -51,11 +51,13 @@ Welcome to Pun-Time! This app fetches jokes from an API and translates them into
 
 ## Running Tests
 
-This app integrates Cypress for E2E Testing. Run the test script:
+This app integrates Cypress for E2E Testing.
 
-    ```
+Run the test script:
+
+```
     pnpm cypress run
-    ```
+```
 
 Cypress will run all the tests in the `cypress/e2e` directory.
 
@@ -80,7 +82,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Citations:
 [1] https://sv443.net/jokeapi/v2/
 [2] https://www.deepl.com/en/pro-api
-
-```
-
-```
