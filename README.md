@@ -31,41 +31,43 @@ Welcome to Pun-Time! This app fetches jokes from an API and translates them into
    ```
 
 3. Create a new file named `.env` in the root directory and add the following variables:
+
    - `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
    - `NEXT_PUBLIC_TRANSLATION_API_KEY`: the API key for the translation API
 
-```
+   ```
+
+   ```
 
 ## Running the App
 
 1. Start the development server:
-```
 
-pnpm dev
-
-```
+   ```
+   pnpm dev
+   ```
 
 2. Open your browser and navigate to `http://localhost:3000`
 
 ## Running Tests
 
 This app integrates Cypress for E2E Testing. Run the test script:
-```
 
-pnpm cypress run
+    ```
+    pnpm cypress run
 
-```
+    ```
 
 Cypress will run all the tests in the `cypress/e2e` directory.
 
 ## Building and Deploying
 
 1. Build the app:
-```
 
-pnpm build
+   ```
+   pnpm build
 
-```
+   ```
 
 2. Deploy the app to your preferred platform (e.g. Vercel, Netlify, etc.)
 
@@ -80,4 +82,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Citations:
 [1] https://sv443.net/jokeapi/v2/
 [2] https://www.deepl.com/en/pro-api
+
+```
+
 ```
