@@ -55,7 +55,6 @@ This app integrates Cypress for E2E Testing. Run the test script:
 
     ```
     pnpm cypress run
-
     ```
 
 Cypress will run all the tests in the `cypress/e2e` directory.
@@ -66,7 +65,6 @@ Cypress will run all the tests in the `cypress/e2e` directory.
 
    ```
    pnpm build
-
    ```
 
 2. Deploy the app to your preferred platform (e.g. Vercel, Netlify, etc.)
