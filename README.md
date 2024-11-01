@@ -33,7 +33,7 @@ Welcome to Pun-Time! This app fetches jokes from an API and translates them into
 3. Create a new file named `.env` in the root directory and add the following variables:
 
    - `NEXT_PUBLIC_JOKE_API_BASE_URL`: the base URL of the joke API
-   - `NEXT_PUBLIC_TRANSLATION_API_KEY`: the API key for the translation API
+   - `DEEPL_API_KEY`: the API key for the translation API
 
    ```
 
