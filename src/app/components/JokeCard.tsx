@@ -1,30 +1,34 @@
 import { Badge } from "@/components/ui/badge";
 import { JokeCardProps } from "../types/jokeTypes";
-import { Loader } from "lucide-react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const JokeCard: React.FC<JokeCardProps> = ({
-  jokeData,
-  selectedLanguage,
-  translating,
-}) => {
+const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
   return (
-    <div className="flex flex-col gap-2 items-start justify-between">
+    <div className="flex flex-col gap-2 min-h-[150px]">
       {translating ? (
-        <p className="text-lg font-semibold">
-          <Loader className="animate-spin" />
-        </p>
+        <div className="w-full">
+          <Skeleton count={3} />
+        </div>
       ) : (
         <p className="text-lg font-semibold">{jokeData.joke}</p>
       )}
 
-      <div className="flex gap-2 items-center absolute bottom-6">
-        <Badge variant="default" className="text-sm bg-cyan-950">
-          {jokeData.category}
-        </Badge>
-
-        <Badge variant={"destructive"} className="text-sm text-white">
-          {selectedLanguage}
-        </Badge>
+      <div className="flex gap-2 items-center absolute bottom-5">
+        {translating ? (
+          <>
+            <Skeleton width={80} height={24} />
+          </>
+        ) : (
+          <>
+            <Badge
+              variant="default"
+              className="text-sm bg-cyan-950 absoulte bottom-1"
+            >
+              {jokeData.category}
+            </Badge>
+          </>
+        )}
       </div>
     </div>
   );

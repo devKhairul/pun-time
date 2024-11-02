@@ -9,6 +9,13 @@ import {
 } from "@/components/ui/select";
 import { LanguageSelectorProps } from "../types/jokeTypes";
 
+const languages = {
+  EN: "English",
+  ES: "Spanish",
+  FR: "French",
+  DE: "German",
+};
+
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   selectedLanguage,
   onLanguageChange,
@@ -20,11 +27,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         <SelectTrigger className="w-[120px]">
           <SelectValue placeholder="Select language" />
         </SelectTrigger>
+
         <SelectContent>
-          <SelectItem value="EN">English</SelectItem>
-          <SelectItem value="DE">German</SelectItem>
-          <SelectItem value="FR">French</SelectItem>
-          <SelectItem value="ES">Spanish</SelectItem>
+          {Object.entries(languages).map(([value, label]) => (
+            <SelectItem key={value} value={value}>
+              {label}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

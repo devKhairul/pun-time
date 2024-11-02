@@ -85,7 +85,7 @@ export default function HomePage() {
         ) : translatedJokes.length > 0 ? (
           translatedJokes.map((joke: Joke) => (
             <Card key={joke.id} className="h-[240px] relative">
-              <CardContent className="p-8 items-start">
+              <CardContent className="px-6 py-4">
                 <JokeCard
                   jokeData={joke}
                   translating={translating}
