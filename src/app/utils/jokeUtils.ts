@@ -33,14 +33,15 @@ export const translateText = async (text: string, targetLang: string) => {
     return data.translations[0].text;
   } catch (error) {
     console.error("Translation error:", error);
-    return text; // Return original text if translation fails
+    return text; // Return original text in case translation fails
   }
 };
 
 export const translateJokes = async (
   jokes: Joke[],
   targetLang: string,
-  setTranslatedJokes: (jokes: Joke[]) => void
+  setTranslatedJokes: (jokes: Joke[]) => void,
+  setTranslating: (translating: boolean) => void
 ) => {
   try {
     const translated = await Promise.all(
@@ -51,8 +52,9 @@ export const translateJokes = async (
       }))
     );
     setTranslatedJokes(translated);
+    setTranslating(false);
   } catch (error) {
     console.error("Translation error:", error);
-    setTranslatedJokes(jokes); // Fallback to original jokes if translation fails
+    setTranslatedJokes(jokes); // Fallback to original if translation fails
   }
 };

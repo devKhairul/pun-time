@@ -13,6 +13,7 @@ export default function HomePage() {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [isFetching, setIsFetching] = useState(false);
   const [translatedJokes, setTranslatedJokes] = useState<Joke[]>([]);
+  const [translating, setTranslating] = useState(false);
 
   const {
     data: jokeData,
@@ -30,7 +31,13 @@ export default function HomePage() {
       if (selectedLanguage === "EN") {
         setTranslatedJokes(jokeData.jokes);
       } else {
-        translateJokes(jokeData.jokes, selectedLanguage, setTranslatedJokes);
+        setTranslating(true);
+        translateJokes(
+          jokeData.jokes,
+          selectedLanguage,
+          setTranslatedJokes,
+          setTranslating
+        );
       }
     }
   }, [jokeData, selectedLanguage]);
@@ -79,7 +86,11 @@ export default function HomePage() {
           translatedJokes.map((joke: Joke) => (
             <Card key={joke.id} className="h-[240px] relative">
               <CardContent className="p-8 items-start">
-                <JokeCard jokeData={joke} selectedLanguage={selectedLanguage} />
+                <JokeCard
+                  jokeData={joke}
+                  translating={translating}
+                  selectedLanguage={selectedLanguage}
+                />
               </CardContent>
             </Card>
           ))

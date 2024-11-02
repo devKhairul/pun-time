@@ -11,6 +11,7 @@ export interface JokesResponse {
 export interface JokeCardProps {
   jokeData: Joke;
   selectedLanguage: string;
+  translating: boolean;
 }
 
 export interface FetchJokesButtonProps {
