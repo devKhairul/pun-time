@@ -3,6 +3,12 @@ import { JokeCardProps } from "../types/jokeTypes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+/**
+ * A single joke card component.
+ * @param jokeData the joke data to render
+ * @param translating whether the joke is currently being translated
+ * @returns a JSX element with the joke content and category
+ */
 const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
   return (
     <div className="flex flex-col gap-2 min-h-[150px]">

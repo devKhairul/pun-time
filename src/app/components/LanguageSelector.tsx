@@ -16,6 +16,15 @@ const languages = {
   DE: "German",
 };
 
+/**
+ * LanguageSelector component provides a dropdown menu for selecting a language.
+ * It displays the current selected language and allows users to change the language
+ * through the dropdown options.
+ *
+ * Props:
+ * - selectedLanguage: A string representing the current selected language.
+ * - onLanguageChange: A function to call when the selected language changes.
+ */
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   selectedLanguage,
   onLanguageChange,

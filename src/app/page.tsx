@@ -9,6 +9,14 @@ import { Loader2 } from "lucide-react";
 import { fetchJokes, translateJokes } from "@/app/utils/jokeUtils";
 import { Joke, JokesResponse } from "@/app/types/jokeTypes";
 
+/**
+ * The homepage of the PunTime application.
+ *
+ * Fetches jokes from the JokeAPI and displays them in a card layout.
+ * Allows the user to select a language and translate the jokes.
+ *
+ * @returns A React component that renders a joke layout.
+ */
 export default function HomePage() {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [isFetching, setIsFetching] = useState(false);

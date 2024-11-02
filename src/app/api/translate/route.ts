@@ -1,6 +1,12 @@
-// app/api/translate/route.ts
 import { NextResponse } from "next/server";
 
+/**
+ * Handles the POST request to translate text using the DeepL API.
+ *
+ * @param request - The incoming request object containing JSON data with `text` to be translated and `targetLang` as the target language code.
+ * @returns {Promise<NextResponse>} A promise that resolves to a NextResponse with the translated text data, or an error message if the translation fails.
+ * @throws {Error} Throws an error if the DeepL API request fails.
+ */
 export async function POST(request: Request) {
   const { text, targetLang } = await request.json();
 

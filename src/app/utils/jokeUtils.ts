@@ -1,5 +1,11 @@
 import { Joke, JokesResponse } from "../types/jokeTypes";
 
+/**
+ * Fetches a list of jokes from the JokeAPI.
+ *
+ * @returns {Promise<JokesResponse>} A promise that resolves to a JokesResponse object containing an array of jokes.
+ * @throws {Error} Throws an error if the fetch operation fails.
+ */
 export const fetchJokes = async (): Promise<JokesResponse> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_JOKE_API_BASE_URL}?blacklistFlags=racist,sexist&type=single&amount=8&lang=en`
@@ -10,6 +16,14 @@ export const fetchJokes = async (): Promise<JokesResponse> => {
   return response.json();
 };
 
+/**
+ * Translates a given text to a target language using the DeepL API.
+ *
+ * @param text The text to translate.
+ * @param targetLang The target language to translate to.
+ * @returns {Promise<string>} A promise that resolves to the translated text.
+ * @throws {Error} Throws an error if the translation operation fails.
+ */
 export const translateText = async (text: string, targetLang: string) => {
   if (targetLang === "EN") return text;
 
