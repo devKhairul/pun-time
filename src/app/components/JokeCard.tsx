@@ -11,7 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
  */
 const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
   return (
-    <div className="flex flex-col gap-2 min-h-[150px]">
+    <div className="flex flex-col gap-2">
       {translating ? (
         <div className="w-full">
           <Skeleton count={3} />
@@ -20,7 +20,7 @@ const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
         <p className="text-lg font-semibold">{jokeData.joke}</p>
       )}
 
-      <div className="flex gap-2 items-center absolute bottom-5">
+      <div className="flex gap-2 lg:absolute lg:bottom-5">
         {translating ? (
           <>
             <Skeleton width={80} height={24} />
@@ -29,7 +29,7 @@ const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
           <>
             <Badge
               variant="default"
-              className="text-sm bg-cyan-950 absoulte bottom-1"
+              className="text-sm bg-cyan-950 justify-end"
             >
               {jokeData.category}
             </Badge>
