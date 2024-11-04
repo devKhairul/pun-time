@@ -17,7 +17,7 @@ const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
           <Skeleton count={3} />
         </div>
       ) : (
-        <p className="text-lg font-semibold">{jokeData.joke}</p>
+        <p className="text-lg font-semibold joke-text">{jokeData.joke}</p>
       )}
 
       <div className="flex gap-2 lg:absolute lg:bottom-5">
