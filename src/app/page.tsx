@@ -62,52 +62,55 @@ export default function HomePage() {
   };
 
   return (
-    <div className="grid items-start p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex justify-between">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-4xl font-bold">
-            <span className="underline text-slate-500">P</span>unTime
-          </h1>
-          <p>A simple application that fetches random jokes. Laugh away!</p>
+    <div className="container p-6 mx-auto">
+      <div className="grid items-start pb-20 gap-8 font-[family-name:var(--font-geist-sans)]">
+        <div className="flex justify-between">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-4xl font-bold">
+              <span className="underline text-slate-500">P</span>unTime
+            </h1>
+            <p>A simple application that fetches random jokes. Laugh away!</p>
+          </div>
+
+          <LanguageSelector
+            selectedLanguage={selectedLanguage}
+            onLanguageChange={handleLanguageChange}
+          />
         </div>
-        <LanguageSelector
-          selectedLanguage={selectedLanguage}
-          onLanguageChange={handleLanguageChange}
+
+        <FetchJokesButton
+          onClick={handleFetchJokes}
+          isLoading={isLoading || isFetching}
         />
-      </div>
 
-      <FetchJokesButton
-        onClick={handleFetchJokes}
-        isLoading={isLoading || isFetching}
-      />
-
-      {error && (
-        <p className="text-red-500">Error fetching jokes: {error.message}</p>
-      )}
-
-      <main className="grid lg:grid-cols-2 gap-8 items-start">
-        {isLoading || isFetching ? (
-          <div className="col-span-2 flex justify-center items-center">
-            <Loader2 className="h-10 w-10 animate-spin" />
-          </div>
-        ) : translatedJokes.length > 0 ? (
-          translatedJokes.map((joke: Joke) => (
-            <Card key={joke.id} className="lg:min-h-[240px] relative">
-              <CardContent className="px-6 py-4">
-                <JokeCard
-                  jokeData={joke}
-                  translating={translating}
-                  selectedLanguage={selectedLanguage}
-                />
-              </CardContent>
-            </Card>
-          ))
-        ) : (
-          <div className="col-span-2 flex justify-center items-center">
-            No jokes available
-          </div>
+        {error && (
+          <p className="text-red-500">Error fetching jokes: {error.message}</p>
         )}
-      </main>
+
+        <main className="grid lg:grid-cols-2 gap-8 items-start">
+          {isLoading || isFetching ? (
+            <div className="col-span-2 flex justify-center items-center">
+              <Loader2 className="h-10 w-10 animate-spin" />
+            </div>
+          ) : translatedJokes.length > 0 ? (
+            translatedJokes.map((joke: Joke) => (
+              <Card key={joke.id} className="lg:min-h-[260px] relative">
+                <CardContent className="px-6 py-4">
+                  <JokeCard
+                    jokeData={joke}
+                    translating={translating}
+                    selectedLanguage={selectedLanguage}
+                  />
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <div className="col-span-2 flex justify-center items-center">
+              No jokes available
+            </div>
+          )}
+        </main>
+      </div>
     </div>
   );
 }

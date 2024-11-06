@@ -29,7 +29,7 @@ const JokeCard: React.FC<JokeCardProps> = ({ jokeData, translating }) => {
           <>
             <Badge
               variant="default"
-              className="text-sm bg-cyan-950 justify-end"
+              className="text-sm dark:text-black bg-cyan-950 dark:bg-white justify-end"
             >
               {jokeData.category}
             </Badge>
